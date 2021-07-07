@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //set객체
+        // var arr =[];
+        arr.push(1);
+        var arr = new Array();
+
+        //원래 다 new 써야하는건데 안써도 돼서 그런거
+        //근데 new Set은 무조건 new 써야해
+
+
+        var mySet = new Set();
+        mySet.add(1);
+        mySet.add(3);
+        mySet.add(12);
+
+        mySet.has(3);
+        //mySet에 3이 있는지 확인하는것
+
+        mySet.add(3);
+        //원래 3 있는데 또 추가하려고하면 안들어 감
+        //배열하고 유사하지만 같은 값 추가 안됨. 무조건 유일한 값이어야 한다.
+
+        //유일한 값을 걸러내거나 보장?받고싶을때 주로 사용함
+
+        var region = {};
+        region["서울"] = "";
+    </script>
+</body>
+
+</html>

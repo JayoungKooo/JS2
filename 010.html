@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    <button type="button" onclick="deletItem();">삭제</button>
+    <script>
+        // var pass = prompt("비밀번호입력해라");
+        // console.log(pass);
+        // if (pass == null) {
+        //     //취소버튼 누른경우
+        // } else if (pass == "") {
+
+        // } else if (pass !== "") {
+        //     console.log(pass);
+        // }
+
+
+
+
+        // window.open("https://naver.com")
+
+
+
+
+        // //setTimeout()
+        // setTimeout(function () {
+        //     alert("실행");
+        // }, 2000);
+        // //2초 후 실행
+        // //0.5초의 경우 500 쓰면 됨
+
+
+
+        // //setInterval
+        // setInterval(function () {
+        //     console.log("프로그램 실행");
+        // }, 1000);
+        // //1초마다??
+
+        var count = 0;
+        var fnc = setInterval(function () {
+            if (count < 5) {
+                console.log("프로그램 실행" + count);
+                count++;
+            } else {
+                console.log("종료");
+                clearInterval(fnc);
+            }
+        }, 1000);
+
+        //f12 콘솔 창에 들어가서 확인 가능함.
+
+
+        function deletItem() {
+            if (confirm("정말 삭제하시겠습니까")) {
+                //삭제로직
+            }
+        }
+    </script>
+</body>
+
+</html>

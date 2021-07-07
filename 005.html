@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="user_data.js"></script>
+    <script>
+        //첫번째 방법
+        function getAgeGroup() {
+            let userAgeMap = new Map();
+            userAgeMap.set("20대", 0);
+            userAgeMap.set("30대", 0);
+            userAgeMap.set("40대", 0);
+            //초기 셋팅..
+            for (var user of userList) {
+                if (user.age >= 20 && user.age < 30) {
+                    userAgeMap.set("20대", userAgeMap.get("20대") + 1);
+                } else if (user.age >= 30 && user.age < 40) {
+                    userAgeMap.set("30대", userAgeMap.get("30대") + 1);
+                } else if (user.age >= 40) {
+                    userAgeMap.set("40대", userAgeMap.get("40대") + 1);
+                }
+            }
+            return userAgeMap;
+        }
+        console.log(getAgeGroup())
+        //테이블은 안나온다
+
+
+
+        //두번째방법
+
+        function getAgeGroup2() {
+            let userAgeGroup = new Map();
+            //"25"
+            //"24"
+            for (var user of userList) {
+                var ageGroup = user.age.toString().charAt(0) + "0"; //"20"
+                //앞자리 숫자에 0붙임
+                if (userAgeGroup.has(ageGroup)) {
+                    userAgeGroup.set(ageGroup, userAgeGroup.get(ageGroup) + 1);
+                } else {
+                    //0인덱스
+                    //userAgeGroup.set("20",1);
+                    userAgeGroup.set(ageGroup, 1)
+                }
+            }
+            return userAgeGroup;
+        }
+        console.log(getAgeGroup2())
+
+
+
+        //object 사용해서 해보기
+
+        function getAgeGroup3() {
+            let userAgeGroup = {};
+
+            for (var user of userList) {
+                var ageGroup = "";
+                if (user.age < 10) {
+                    ageGroup = "0";
+                } else if (user.age >= 100) {
+                    ageGroup = user.age.toString().substr(0, 2) + "0";
+                } else {
+                    var ageGroup = user.age.toString().charAt(0) + "0"; //"20"
+                }
+
+
+
+                //앞자리 숫자에 0붙임
+                //근데 4살이어도 40대, 104세도 10대가 됨...한계
+                //
+                if (userAgeGroup[ageGroup]) {
+                    //ageGroup이라는 키가 있는지 물어보는거
+                    userAgeGroup[ageGroup] = userAgeGroup[ageGroup] + 1;
+                } else {
+                    //0인덱스
+                    //userAgeGroup.set("20",1);
+                    userAgeGroup[ageGroup] = 1
+                }
+            }
+            return userAgeGroup;
+        }
+        console.log(getAgeGroup3())
+
+        //map get set쓰면 그냥 프로그램적으로,,,멋있어보이나?
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        console.log(Math.round(4.9));
+        console.log(Math.round(4.4));
+        console.log(Math.round(-4.2));
+
+        //ceil()-파라미터로 전달받은 숫자형 데이터를 무조건 올림처리해서 정수를 만듬
+        console.log(Math.ceil(4.4));
+
+        //floor()-무조건 내림
+        console.log(Math.floor(4.9));
+
+        //trunc()-무조건 정수 부분만 반환
+        console.log(Math.trunc(4.9));
+
+        //sign() - 0보다 크면 1, 0보다 작으면 -1, 0이면 0 양수음수 파악할때 사용
+        console.log(Math.sign(23));
+
+        //pow()-제곱근 의미
+        console.log(Math.pow(8, 3));
+
+        //sqrt() - 루트값
+        console.log(Math.sqrt(64)); //8
+
+        //abs - 무조건 양수값으로 변환
+        console.log(Math.abs(-75.3));
+
+
+        //min(), max()
+        console.log(Math.min(5, 54, 87, 321, 65, 45));
+        console.log(Math.max(5, 54, 87, 321, 65, 45));
+
+
+
+        //random() - 무작위숫자형 데이터. 다만, 0보다 크고 1보다 작은수.
+        console.log(Math.random());
+        console.log(Math.floor(Math.random() * 10)); //0에서 9사이
+        console.log(Math.floor(Math.random() * 10) + 1); //1에서 10사이
+
+
+        //min~max 사이의 랜덤 값 도출 ***중요
+
+        function getRandomInteger(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        console.log(getRandomInteger(11, 20))
+
+
+
+
+        //가위바위보게임 함수 만들기
+        //함수명 rspPlayer
+        //파라미터 1개 - "가위","바위","보"
+        //const arrRsp = ["가위","바위","보"];
+        //random 함수를 써서 0~2까지 정수를 무작위로 나오게
+        //이것을 arrRsp 배열에 인덱스번호 넣으면
+        //return - {userRsp:"",playerRsp:"",winner:user가 이기면 1 지면 -1 비기면 0}
+
+
+
+
+
+        function rspPlayer(userRsp) {
+            const arrRsp = ["가위", "바위", "보"];
+            var playerRsp = arrRsp[getRandomInteger(0, 2)]
+            console.log(playerRsp)
+            if (playerRsp == userRsp) {
+                return {
+                    "userRsp": userRsp,
+                    "playerRsp": playerRsp,
+                    "winner": 0
+                };
+            } else if (userRsp == "가위") {
+                if (playerRsp == "보") {
+                    return {
+                        "userRsp": userRsp,
+                        "playerRsp": playerRsp,
+                        "winner": 1
+                    };
+                } else {
+                    return {
+                        "userRsp": userRsp,
+                        "playerRsp": playerRsp,
+                        "winner": -1
+                    };
+                }
+            } else if (userRsp == "바위") {
+                if (playerRsp == "가위") {
+                    return {
+                        "userRsp": userRsp,
+                        "playerRsp": playerRsp,
+                        "winner": 1
+                    };
+                } else {
+                    return {
+                        "userRsp": userRsp,
+                        "playerRsp": playerRsp,
+                        "winner": -1
+                    };
+                }
+            } else if (userRsp == "보") {
+                if (playerRsp == "바위") {
+                    return {
+                        "userRsp": userRsp,
+                        "playerRsp": playerRsp,
+                        "winner": 1
+                    };
+                } else {
+                    return {
+                        "userRsp": userRsp,
+                        "playerRsp": playerRsp,
+                        "winner": -1
+                    };
+                }
+            }
+
+        }
+        console.table(rspPlayer("가위"));
+
+
+
+
+
+        //두번째 방법
+        function rspPlayer2(userRsp) {
+            const rsp = ["가위", "바위", "보"];
+            var playerRsp = rsp[getRandomInteger(0, 2)]
+            const winValue = {
+                //이길수 있는 값을 넣음
+                "가위": "보",
+                "바위": "가위",
+                "보": "바위"
+            }
+            return {
+                "userRsp": userRsp,
+                "playerRsp": playerRsp,
+                "winner": (userRsp == playerRsp) ? 0 : (winValue[userRsp] == playerRsp) ? 1 : -1
+            }
+        }
+        console.table(rspPlayer2("가위"))
+    </script>
+</body>
+
+</html>
